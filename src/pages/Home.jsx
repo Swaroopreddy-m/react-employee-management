@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/Home.css";
 
@@ -6,6 +7,7 @@ function Home() {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault(); // prevent page reload
@@ -26,6 +28,15 @@ function Home() {
       console.log("Login Success:", response.data.status);
 
       alert(response.data.status); // "LOGIN_SUCCESS" or "INVALID_CREDENTIALS"
+
+
+       if (response.data.status === "LOGIN_SUCCESS") {
+        sessionStorage.setItem("isAuthenticated", "true");
+        sessionStorage.setItem("userName", userId);
+        navigate("/dashboard"); // 🔥 move to main page
+      } else {
+        alert("Invalid Credentials");
+      }
 
       // Optional: store token if backend returns JWT in future
       // localStorage.setItem("token", response.data.token);
@@ -54,7 +65,7 @@ function Home() {
           <b>E</b>mployee <b>M</b>anagement
         </h1>
         <p>Secure. Fast. Reliable.</p>
-      </div>
+      </div>  
 
       {/* LOGIN CARD */}
       <div className="login-card">

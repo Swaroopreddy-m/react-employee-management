@@ -22,3 +22,22 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# React
+node_modules/
+dist/
+.vite/
+.env
+
+# Spring Boot / Java
+target/
+*.class
+*.jar
+*.war
+*.iml
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
