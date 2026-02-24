@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Welcome from "./pages/Welcome";
 import Employees from "./pages/Employees";
@@ -13,6 +14,7 @@ function App() {
  <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
 
         <Route
           path="/dashboard"
@@ -22,6 +24,7 @@ function App() {
             </ProtectedRoute>
           }
         >
+        
         {/* 👇 CHILD ROUTES */}
           <Route index element={<Welcome />} />
           <Route path="employees" element={<Employees />} />

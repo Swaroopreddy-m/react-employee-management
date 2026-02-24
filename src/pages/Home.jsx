@@ -33,7 +33,7 @@ function Home() {
        if (response.data.status === "LOGIN_SUCCESS") {
         sessionStorage.setItem("isAuthenticated", "true");
         sessionStorage.setItem("userName", userId);
-        navigate("/dashboard"); // 🔥 move to main page
+        navigate("/dashboard"); {/* will found Routers in app.jsx */} // 🔥 move to main page 
       } else {
         alert("Invalid Credentials");
       }
@@ -56,6 +56,14 @@ function Home() {
       }
     }
   };
+
+
+  const handleSignin = async (e) => {
+    e.preventDefault(); // prevent page reload
+    setError("");
+    navigate("/signup"); {/* will found Routers in app.jsx */}
+    
+  }
 
   return (
     <div className="login-container">
@@ -96,7 +104,7 @@ function Home() {
 
         <div className="divider">OR</div>
 
-        <button className="signup-btn">Sign Up</button>
+        <button className="signup-btn" onClick={handleSignin}>Sign Up</button>
       </div>
     </div>
   );
