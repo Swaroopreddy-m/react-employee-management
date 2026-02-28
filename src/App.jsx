@@ -10,8 +10,14 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import "./App.css";
 
 function App() {
+  // 🔹 Dynamic basename: / for localhost, /react-employee-management for production
+  const basename =
+    import.meta.env.MODE === "production"
+      ? "/react-employee-management"
+      : "/";
+
   return (
- <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
@@ -24,8 +30,7 @@ function App() {
             </ProtectedRoute>
           }
         >
-        
-        {/* 👇 CHILD ROUTES */}
+          {/* 👇 CHILD ROUTES */}
           <Route index element={<Welcome />} />
           <Route path="employees" element={<Employees />} />
           <Route path="add" element={<AddEmployee />} />
